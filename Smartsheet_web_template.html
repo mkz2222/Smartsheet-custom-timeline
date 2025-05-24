@@ -1,0 +1,106 @@
+  
+  <div class="dv_container text-center">
+
+
+    <div class="dv_row">
+      <div class="col-md-12">
+        <h2>Project Schedule Web Integration</h2>
+
+          <p class="text-center"> Total {{qmax}} projects</p>
+
+        {% for r in projects %}
+
+        <div class="project0">
+          <div class="project1">
+
+            {% if r.Last_update|date:"Y-m-d" > date|date:"Y-m-d" %}
+
+              <div class="new_update">
+                <p>Updated</p> 
+
+              </div>
+
+            {% endif %}
+
+            <h3>{{ r.Customer }} - {{r.PO | slugify|upper}}</h3>
+            <p>Last update: {{ r.Last_update | date:"n/d/Y G:i"}}</p>
+          </div>
+
+          <div class="project2">
+
+            {% if r.Booking %}
+
+              {% for c in comments %}
+
+                {% if c.Index == r.Index %}
+
+                <div class="tl_container">
+
+                  <div class="tl_msg">
+                    <p>{{ c.Msg | truncatechars:46 }}</p>
+
+                  </div>
+
+                  <div class="tla_line">
+                  </div>
+
+                  <div class="tla_dot">
+                    <img src="{% static 'images/tick.png' %}">
+                  </div>
+
+                  <div class="tl_year">
+                    <p>{{ c.Date4 | date:"n/d" }}</p>
+                  </div>
+
+
+                </div>
+
+                {% endif %}
+
+              {% endfor %} 
+
+            {% else %}
+
+
+              {% for c in comments %}
+
+                {% if c.Index == r.Index %}
+
+                <div class="tl_container">
+
+                  <div class="tl_msg">
+                    <p>{{ c.Msg | truncatechars:46 }}</p>
+
+                  </div>
+
+                  <div class="tl_dot">
+                  </div>
+
+                  <div class="tl_line">
+                  </div>
+
+                  <div class="tl_year">
+                    <p>{{ c.Date4 | date:"n/d" }}</p>
+                  </div>
+
+
+                </div>
+
+                {% endif %}
+
+              {% endfor %} 
+
+            {% endif %}
+
+          </div>
+
+        </div>
+
+        {% empty %}
+
+        {% endfor %} 
+
+      </div>
+    </div>
+  </div>
+
