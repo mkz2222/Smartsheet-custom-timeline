@@ -5,3 +5,5 @@ This project aims to transform team collaboration messages from Smartsheet into 
 Data wrangling from Smartsheet: Python, Pandas.\
 Web backend: Python Django.\
 Web frontend: HTML CSS.
+
+The implementation can be found here: https://markz.work/dvss/
